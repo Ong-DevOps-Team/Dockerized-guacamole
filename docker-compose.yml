@@ -16,8 +16,7 @@ services:
       POSTGRES_PASSWORD: ongraph
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init:/docker-entrypoint-initdb.d 	
-
+      - ./init:/docker-entrypoint-initdb.d
   guacamole:
     image: guacamole/guacamole
     container_name: guacamole
@@ -34,6 +33,19 @@ services:
       - guacd
       - postgres
 
+  ubuntu-lab:
+    image: rastasheep/ubuntu-sshd:18.04
+    container_name: ubuntu-lab
+    restart: unless-stopped
+    expose:
+      - "22"
+    ports:
+      - "2222:22"
+    environment:
+      - ROOT_PASSWORD=root
+    command: "/usr/sbin/sshd -D"
+    
 volumes:
   postgres_data:
+
 

@@ -33,8 +33,8 @@ docker compose up -d
 
 This will start:
 
-- `guacamole`: The Apache Guacamole web application
-- `guacd`: The Guacamole proxy daemon
+- `guacamole`: The Apache Guacamole web application  
+- `guacd`: The Guacamole proxy daemon  
 - `guacamole_postgres`: PostgreSQL database for Guacamole
 
 ---
@@ -56,11 +56,76 @@ Default credentials:
 
 ---
 
+## Connecting to a Test VM via Guacamole
 
+This Dockerized test setup runs Apache Guacamole, a web-based remote desktop gateway. It allows you to securely access an Ubuntu virtual machine (with SSH) directly from your browser. No additional client software is needed — just a browser.
+
+You can use it to:
+
+- Remotely log into the Ubuntu VM
+- Test SSH access to other systems (e.g., localhost, external servers)
+- Manage connections via a clean web interface
+
+### Steps to Add a New SSH Connection
+
+1. Go to `Settings` → `Connections` → `New Connection`
+2. Fill in the following:
+
+#### For the test Ubuntu VM:
+
+- **Name**: `ubuntu-lab-test` (or any name)
+- **Location**: `Root`
+- **Protocol**: `SSH`
+
+**Parameters:**
+
+- **Network**
+  - **Hostname**: `ubuntu-lab`
+  - **Port**: `22`
+  - **Connection Timeout**: `30`
+
+- **Authentication**
+  - **Username**: `root`
+  - **Password**: `root`
+
+Click **Save**.
+
+3. Return to the **Home** screen → Click the connection to test SSH login.
+
+---
+
+### To Test Other Systems or VMs:
+
+Use the following values:
+
+- **Name**: `<any name>`
+- **Location**: `Root`
+- **Protocol**: `SSH`
+
+**Parameters:**
+
+- **Network**
+  - **Hostname**: `<public-ip of the machine to connect>`
+  - **Port**: `22`
+  - **Connection Timeout**: `30`
+
+- **Authentication**
+  - **Username**: `<username of the machine>`
+  - **Password**: `root`
+  - **OR Private Key**: (Paste private SSH key or `.pem` content)
+
+Click **Save** and test the connection from the **Home** screen.
+
+---
 
 ## Maintainers
 
 Ong DevOps Team
+
+---
+
+## Note: 
+This is just for testing purpose
 
 ---
 
