@@ -125,7 +125,7 @@ Ong DevOps Team
 ---
 
 ## Note: 
-This is just for testing purpose
+This is just a sample Guacamole for connecting VMs
 
 ---
 
