@@ -39,40 +39,6 @@ This will start:
 
 ---
 
-### 3. Initialize the PostgreSQL Database Schema
-
-You need to initialize the Guacamole schema in the PostgreSQL database by executing the schema SQL file.
-
-#### Step 1: Copy the schema SQL file into the PostgreSQL container
-
-```bash
-docker cp full-schema.sql guacamole_postgres:/tmp/full-schema.sql
-```
-
-#### Step 2: Enter the PostgreSQL container
-
-```bash
-docker exec -it guacamole_postgres bash
-```
-
-#### Step 3: Run the SQL schema inside the container
-
-```bash
-psql -U guacamole_user -d guacamole_db -f /tmp/full-schema.sql
-```
-
----
-
-### 4. Restart the Guacamole Container
-
-Restart the Guacamole container so it picks up the initialized database:
-
-```bash
-docker restart guacamole
-```
-
----
-
 ## Access Guacamole
 
 Once everything is running, access Guacamole in your browser:
